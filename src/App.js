@@ -27,7 +27,7 @@ function App() {
 
   const token = sessionStorage.getItem('token');
 
-  if (!loggedInUser.email && token) {
+  if (!loggedInUser?.email && token) {
     var decoded = jwt_decode(token);
     console.log(decoded);
     const info = { ...loggedInUser }
