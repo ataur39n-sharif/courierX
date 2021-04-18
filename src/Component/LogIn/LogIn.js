@@ -44,7 +44,14 @@ const LogIn = () => {
                 //     email: email,
                 //     image: photoURL
                 // };
-                setLoggedInUser(result.user)
+                var user = result.user;
+            const newUser ={
+                userLoggedIn : true,
+                name : user.displayName ,
+                email : user.email,
+                image : user.photoURL ,
+            }
+                setLoggedInUser(newUser);
                 history.replace(from)
                 authToken()
             }).catch((error) => {
