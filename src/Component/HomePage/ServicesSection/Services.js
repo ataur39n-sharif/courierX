@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useRouteMatch } from 'react-router';
 import { Link } from 'react-router-dom';
+import './Services.css'
 
 const Services = () => {
     const [services, setServices] = useState([])
@@ -16,16 +17,41 @@ const Services = () => {
             })
     }, [])
 
-    const handleClick = (id) => {
-
+    const handelClick = (id) => {
+        history.push(`/details/${id}`)
     }
 
     return (
-        <div>
+        // <div>
+        //     {
+        //         services.map(service => <li key={service._id}>name: {service.title} cost: {service.cost} <Link to={`/details/${service._id}`}><button>buy now</button></Link></li>)
+        //     }
+        // </div>
+
+
+        <div className='row w-100 text-center p-5 bg-light rounded'>
+            <h1 className='p-5'>Our Services</h1>
             {
-                services.map(service => <li key={service._id}>name: {service.title} cost: {service.cost} <Link to={`/details/${service._id}`}><button>buy now</button></Link></li>)
+                services.map(service =>
+
+                    <div key={service._id} className="col-md-3 d-flex justify-content-center rainbow">
+                        <div className="card p-3" style={{ width: "18rem" }}>
+                            {/* <img src={images}  alt=""> */}
+                            <img style={{ height: "50%" }} src={service.image} alt="" />
+                            <div className="card-body">
+                                <h5 className="card-title">{service.title}</h5>
+                                <h1 className="card-title">${service.cost}</h1>
+                                <button onClick={() =>handelClick(service._id)} className="btn btn-warning">view details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                )
             }
         </div>
+
+
+
     );
 };
 

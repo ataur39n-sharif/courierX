@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
-const SingleParsel = ({ order ,show , setShow}) => {
+const SingleParsel = ({ order ,show , setShow , loadData}) => {
 
     
     const [update, setUpdate] = useState({})
@@ -44,6 +44,7 @@ const SingleParsel = ({ order ,show , setShow}) => {
                 })
                     .then(response => response.json())
                     .then(data => {
+                        loadData()
                         console.log(data);
                         setShow(false)
 

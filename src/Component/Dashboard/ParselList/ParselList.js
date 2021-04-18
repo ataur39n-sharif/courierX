@@ -6,14 +6,18 @@ const ParselList = () => {
     const [show, setShow] = useState(false)
     const [orders, setOrders] = useState([])
 
-    useEffect(() => {
+    const loadData = () => {
         fetch(`https://frozen-inlet-20228.herokuapp.com/orders`)
             .then((response) => response.json())
             .then(data => {
                 console.log(data);
                 setOrders(data)
             })
-    }, [orders])
+    }
+
+    useEffect(() => {
+        loadData()
+    }, [])
 
    
 
@@ -37,7 +41,7 @@ const ParselList = () => {
                     </thead>
 
                     {
-                        orders.map(order => <SingleParsel order={order} show={show} setShow={setShow} key={order._id}></SingleParsel>
+                        orders.map(order => <SingleParsel loadData={loadData} order={order} show={show} setShow={setShow} key={order._id}></SingleParsel>
 
                             
                         )

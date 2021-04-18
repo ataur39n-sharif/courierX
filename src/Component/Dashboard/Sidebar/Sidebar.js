@@ -10,7 +10,7 @@ const Sidebar = () => {
     const [admin, setAdmin] = useState(false)
 
     useEffect(() => {
-        fetch(`https://frozen-inlet-20228.herokuapp.com/admin`, {
+        fetch(`http://localhost:5000/admin`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
