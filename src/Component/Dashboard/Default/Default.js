@@ -4,7 +4,7 @@ import { useContext } from 'react/cjs/react.development';
 import { userContext } from '../../../App';
 
 const Default = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(userContext)
+    const [loggedInUser, setLoggedInUser] = useContext(userContext);
     // const date = 
     return (
 

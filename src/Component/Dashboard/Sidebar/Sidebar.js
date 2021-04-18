@@ -7,7 +7,7 @@ import './Sidebar.css'
 
 const Sidebar = () => {
     let { path, url } = useRouteMatch();
-    const [loggedInUser, setLoggedInUser] = useContext(userContext)
+    const [loggedInUser, setLoggedInUser] = useContext(userContext);
     const [admin, setAdmin] = useState(false)
 
     useEffect(() => {
