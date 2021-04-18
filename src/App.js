@@ -23,7 +23,7 @@ export const userContext = createContext()
 AOS.init();
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState({})
+  const [loggedInUser, setLoggedInUser] = useState()
 
   const token = sessionStorage.getItem('token');
 
