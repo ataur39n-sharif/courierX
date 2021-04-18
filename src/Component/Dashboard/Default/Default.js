@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ArrowLeftSquareFill, ArrowUpCircleFill, ArrowUpLeftCircleFill, ArrowUpSquareFill } from 'react-bootstrap-icons';
-import { useContext } from 'react/cjs/react.development';
 import { userContext } from '../../../App';
 
 const Default = () => {
