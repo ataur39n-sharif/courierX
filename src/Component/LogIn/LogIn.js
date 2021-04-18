@@ -38,13 +38,13 @@ const LogIn = () => {
             .signInWithPopup(provider)
             .then((result) => {
                 console.log(result);
-                const { displayName, email, photoURL } = result.user;
-                const userInfo = {
-                    name: displayName,
-                    email: email,
-                    image: photoURL
-                }
-                setLoggedInUser(userInfo)
+                // const { displayName, email, photoURL } = result.user;
+                // const userInfo = {
+                //     name: displayName,
+                //     email: email,
+                //     image: photoURL
+                // };
+                setLoggedInUser(result.user)
                 history.replace(from)
                 authToken()
             }).catch((error) => {
