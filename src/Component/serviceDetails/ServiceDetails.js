@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ArrowRight } from 'react-bootstrap-icons';
 import { useHistory, useParams } from 'react-router';
-import { UserContext } from '../../App';
+import { userContext } from '../../App';
 
 const CheckOut = () => {
     const { id } = useParams()
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const [loggedInUser, setLoggedInUser] = useContext(userContext)
     const [checkout, setCheckout] = useState()
 
     let history = useHistory()

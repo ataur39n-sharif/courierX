@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { BagCheckFill, CardList, Gear, GearFill, List, PersonPlusFill, PlusCircleFill } from 'react-bootstrap-icons';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { useContext } from 'react/cjs/react.development';
-import { UserContext } from '../../../App';
+import { userContext } from '../../../App';
 import './Sidebar.css'
 
 const Sidebar = () => {
     let { path, url } = useRouteMatch();
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const [loggedInUser, setLoggedInUser] = useContext(userContext)
     const [admin, setAdmin] = useState(false)
 
     useEffect(() => {

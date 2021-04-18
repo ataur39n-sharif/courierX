@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../../App';
+import { userContext } from '../../../App';
 
 const Orders = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const [loggedInUser, setLoggedInUser] = useContext(userContext)
 
     const [orders , setOrders] = useState([])
 

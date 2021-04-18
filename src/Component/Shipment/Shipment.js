@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { UserContext } from '../../App';
+import { userContext } from '../../App';
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router';
 
 
 const Shipment = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const [loggedInUser, setLoggedInUser] = useContext(userContext)
     // console.log(loggedInUser);
 
     let history = useHistory()

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
-import { UserContext } from '../../App';
+import { userContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
 import Swal from 'sweetalert2';
 
@@ -14,7 +14,7 @@ if (!firebase.apps.length) {
 
 const LogIn = () => {
 
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const [loggedInUser, setLoggedInUser] = useContext(userContext)
 
     const history = useHistory();
     const location = useLocation();

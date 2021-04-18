@@ -1,10 +1,10 @@
 import React from 'react';
 import { ArrowLeftSquareFill, ArrowUpCircleFill, ArrowUpLeftCircleFill, ArrowUpSquareFill } from 'react-bootstrap-icons';
 import { useContext } from 'react/cjs/react.development';
-import { UserContext } from '../../../App';
+import { userContext } from '../../../App';
 
 const Default = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const [loggedInUser, setLoggedInUser] = useContext(userContext)
     // const date = 
     return (
 

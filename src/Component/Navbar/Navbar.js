@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { UserContext } from '../../App';
+import { userContext } from '../../App';
 
 const Navbar = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const [loggedInUser, setLoggedInUser] = useContext(userContext)
     const [show, setShow] = useState(false)
 
     const handleClick = () => {

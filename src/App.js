@@ -19,7 +19,7 @@ import Shipment from './Component/Shipment/Shipment';
 import Payment from './Component/Payment/Payment';
 import PrivateRoute from './Component/LogIn/PrivateRoute/PrivateRoute';
 
-export const UserContext = createContext()
+export const userContext = createContext()
 AOS.init();
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
 
   console.log(loggedInUser);
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+    <userContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
         <Navbar></Navbar>
         <Switch>
@@ -68,7 +68,7 @@ function App() {
           </PrivateRoute>
         </Switch>
       </Router>
-    </UserContext.Provider>
+    </userContext.Provider>
   );
 }
 

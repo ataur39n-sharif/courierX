@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
-import { UserContext } from '../../App';
+import { userContext } from '../../App';
 
 const SimplePay = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+  const [loggedInUser, setLoggedInUser] = useContext(userContext)
 
   const handleSubmit = async (event) => {
     event.preventDefault();
