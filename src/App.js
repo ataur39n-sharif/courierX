@@ -23,21 +23,21 @@ export const userContext = createContext()
 AOS.init();
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState()
+  const [loggedInUser, setLoggedInUser] = useState({})
 
-  const token = sessionStorage.getItem('token');
+  // const token = sessionStorage.getItem('token');
 
-  if (!loggedInUser?.email && token) {
-    var decoded = jwt_decode(token);
-    console.log(decoded);
-    const info = { ...loggedInUser }
-    info.name = decoded.name;
-    info.email = decoded.email;
-    info.image = decoded.picture;
-    if (decoded.email) {
-      setLoggedInUser(info)
-    }
-  }
+  // if (!loggedInUser?.email && token) {
+  //   var decoded = jwt_decode(token);
+  //   console.log(decoded);
+  //   const info = { ...loggedInUser }
+  //   info.name = decoded.name;
+  //   info.email = decoded.email;
+  //   info.image = decoded.picture;
+  //   if (decoded.email) {
+  //     setLoggedInUser(info)
+  //   }
+  // }
 
   console.log(loggedInUser);
   return (
