@@ -32,7 +32,7 @@ console.log(orders);
                     </tr>
                 </thead>
 
-                {
+                { 
                     orders.map(order =>
 
                         < tbody key={order._id}>

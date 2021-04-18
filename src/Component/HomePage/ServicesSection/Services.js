@@ -34,18 +34,17 @@ const Services = () => {
             {
                 services.map(service =>
 
-                    <div key={service._id} className="col-md-3 d-flex justify-content-center rainbow">
+                    <div key={service._id} className="col-sm-6 col-md-4 d-flex justify-content-center mb-3">
                         <div className="card p-3" style={{ width: "18rem" }}>
                             {/* <img src={images}  alt=""> */}
                             <img style={{ height: "50%" }} src={service.image} alt="" />
                             <div className="card-body">
                                 <h5 className="card-title">{service.title}</h5>
                                 <h1 className="card-title">${service.cost}</h1>
-                                <button onClick={() =>handelClick(service._id)} className="btn btn-warning">view details</button>
+                                <button  onClick={() =>handelClick(service._id)} className="btn btn-warning mb-2">view details</button>
                             </div>
                         </div>
                     </div>
-
                 )
             }
         </div>

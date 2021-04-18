@@ -101,12 +101,13 @@ const loadData = () => {
 
                 </table>
                 :
-                services.length === 0 ? <p> NO Service Available right now </p> :
+                (
 
                     <div class="d-flex justify-content-center">
                         <div class="spinner-border" role="status">
                         </div>
                     </div>
+                    )
             }
         </div >
     );
