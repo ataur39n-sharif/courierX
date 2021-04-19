@@ -21,7 +21,7 @@ const TrackOrder = () => {
         console.log(id);
        
         if(id){
-            fetch(`http://localhost:5000/OrderDetails/${id}`)
+            fetch(`https://frozen-inlet-20228.herokuapp.com/OrderDetails/${id}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data[0])
