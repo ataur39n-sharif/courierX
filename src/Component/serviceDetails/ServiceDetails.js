@@ -20,6 +20,7 @@ const CheckOut = () => {
     }, [])
 
     const handleClick = () => {
+        console.log('clicked');
         const newInfo = { ...loggedInUser }
         newInfo.orderInfo = checkout
         setLoggedInUser(newInfo)

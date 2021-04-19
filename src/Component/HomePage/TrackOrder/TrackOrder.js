@@ -47,7 +47,7 @@ const TrackOrder = () => {
             <div className="w-75 ">
                 <h1 className=''>Track your Parcel</h1>
                 <div className="d-flex justify-content-center  p-5" >
-                    <input onBlur={handleChange} name="id" type="text" className="form-control w-100 " placeholder='Track your order by Order ID' require/>
+                    <input onBlur={handleChange} name="id" type="text" className="form-control w-100 " placeholder='Track your order by Order ID' required/>
                     <button onClick={handleClick} className="btn btn-dark ms-2" type="submit" ><Search></Search> </button>
 
                 </div>
