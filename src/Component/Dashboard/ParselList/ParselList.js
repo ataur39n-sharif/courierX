@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import Swal from 'sweetalert2';
-import SingleParsel from './SingleParsel';
 
 const ParselList = () => {
-    const [show, setShow] = useState(false)
+
     const [orders, setOrders] = useState([])
+
+    let history = useHistory()
+
 
     const loadData = () => {
         fetch(`https://frozen-inlet-20228.herokuapp.com/orders`)
@@ -16,12 +19,22 @@ const ParselList = () => {
     }
 
     useEffect(() => {
+
         loadData()
+
     }, [])
 
-   
 
-   
+
+
+    const handelClick = (id) => {
+        history.push(`/dashboard/OrderDetails/${id}`)
+    }
+
+
+
+
+
 
     return (
         <div data-aos="fade-down" data-aos-duration="1500" className="text-center rounded mt-4 bg-light w-100 p-3">
@@ -34,26 +47,32 @@ const ParselList = () => {
                             <th scope="col">Service name</th>
                             <th scope="col">order by</th>
                             <th scope="col">Status</th>
-                            {
-                                show && <th scope="col">Action</th>
-                            }
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
 
                     {
-                        orders.map(order => <SingleParsel loadData={loadData} order={order} show={show} setShow={setShow} key={order._id}></SingleParsel>
+                        orders.map(order =>
+                            < tbody key={order._id}>
+                                <tr>
+                                    <th scope="row">{order._id}</th>
+                                    <td>{order.orderInfo.title}</td>
+                                    <td>{order.name}</td>
+                                    <td>{order.status}</td>
+                                    <td> <button onClick={() => handelClick(order._id)} className="btn btn-warning">view</button> </td>
+                                </tr>
+                            </tbody>
 
-                            
                         )
                     }
 
                 </table>
                 :
                 orders.length === 0 ? <p>NO Order found</p> :
-                <div class="d-flex justify-content-center">
-                    <div class="spinner-border" role="status">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border" role="status">
+                        </div>
                     </div>
-                </div>
             }
         </div >
     );

@@ -18,6 +18,7 @@ import CheckOut from './Component/serviceDetails/ServiceDetails';
 import Shipment from './Component/Shipment/Shipment';
 import Payment from './Component/Payment/Payment';
 import PrivateRoute from './Component/LogIn/PrivateRoute/PrivateRoute';
+import OrderDetails from './Component/Dashboard/ParselList/OrderDetails';
 
 export const userContext = createContext()
 AOS.init();
@@ -57,15 +58,18 @@ function App() {
           <Route path="/logIn">
             <LogIn></LogIn>
           </Route>
-          <PrivateRoute path="/details/:id">
+          <Route path="/details/:id">
             <CheckOut></CheckOut>
-          </PrivateRoute>
+          </Route>
           <PrivateRoute path="/shipment">
             <Shipment></Shipment>
           </PrivateRoute>
           <PrivateRoute path="/payment">
             <Payment></Payment>
           </PrivateRoute>
+          {/* <Route path="/OrderDetails/:id">
+            <OrderDetails></OrderDetails>
+          </Route> */}
         </Switch>
       </Router>
     </userContext.Provider>

@@ -27,7 +27,6 @@ const Sidebar = () => {
     console.log(admin);
 
     return (
-        <div >
             <div className="sidebar text-center">
 
                 <h1>Dashboard</h1>
@@ -43,7 +42,6 @@ const Sidebar = () => {
                 <Link to={`${url}/orders`}><BagCheckFill/> Orders</Link>
                 <Link to={`${url}/review`}> <span style={{fontSize:'20px'}}>★</span> Review </Link>
             </div>
-        </div>
     );
 };
 
