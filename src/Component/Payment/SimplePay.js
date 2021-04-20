@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
-import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { userContext } from '../../App';
+import Swal from 'sweetalert2';
+import { useHistory } from 'react-router';
 
 const SimplePay = () => {
   const stripe = useStripe();
   const elements = useElements();
+
+  let history = useHistory()
 
   const [loggedInUser, setLoggedInUser] = useContext(userContext)
 
@@ -15,7 +19,7 @@ const SimplePay = () => {
       return;
     }
     const cardElement = elements.getElement(CardElement);
-    const {error, paymentMethod} = await stripe.createPaymentMethod({
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card: cardElement,
     });
@@ -23,37 +27,53 @@ const SimplePay = () => {
     if (error) {
       console.log('[error]', error);
     } else {
-      
+
       console.log('[PaymentMethod]', paymentMethod);
 
-      const info = {...loggedInUser}
+      const info = { ...loggedInUser }
       info.paymentInfo = paymentMethod
       info.status = 'pending'
       info.orderDate = new Date().toDateString()
-      
-      fetch(`https://frozen-inlet-20228.herokuapp.com/addOrder`,{
+
+      fetch(`https://frozen-inlet-20228.herokuapp.com/addOrder`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(info)
       })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+
+          if (data) {
+            history.push('/home')
+            Swal.fire(
+              'Success!',
+              'Order Placed successfully . Check your Order status on Dashboard .',
+              'success'
+            )
+          }else{
+            Swal.fire(
+              'Error!',
+              'Please try again with correct information',
+              'error'
+          )
+          }
+        })
 
     }
   };
 
   return (
-    <div className="text-center m-auto">
+    <div className="text-center w-50 m-auto">
+      <h1 className='p-5'>To process Order Make payment</h1>
       <form onSubmit={handleSubmit}>
-      <CardElement className='m-5' />
-      <button className="btn btn-dark"type="submit" disabled={!stripe}>
-        Pay
+        <CardElement className='m-5' />
+        <button className="btn btn-dark" type="submit" disabled={!stripe}>
+          Pay
       </button>
-    </form>
+      </form>
     </div>
   );
 };

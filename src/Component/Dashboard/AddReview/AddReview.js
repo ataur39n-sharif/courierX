@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
 import { userContext } from '../../../App';
 
 const Review = () => {
@@ -25,6 +26,19 @@ const Review = () => {
         .then(response => response.json())
         .then(data => {
             console.log(data);
+            if(data){
+                Swal.fire(
+                    'Success!',
+                    'Thank you for your review .',
+                    'success'
+                )
+            }else{
+                Swal.fire(
+                    'Error!',
+                    'Please try again later',
+                    'error'
+                )
+            }
         })
     };
     return (

@@ -3,6 +3,8 @@
 }
 .custom-hover:hover{
     /* margin-bottom : 10px; */
+    border-color: rgb(20, 19, 19);
+    color: orange;
     transform:scale(1.10);
     box-shadow: 5px 5px 10px #ccc;
     transition:all ease 0.3s;

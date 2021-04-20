@@ -12,7 +12,7 @@ const stripePromise = loadStripe(
 
 const Payment = () => {
     return (
-      <div className='w-50'>
+      <div className='w-100'>
             <Elements stripe={stripePromise}>
            <SimplePay/>
         </Elements>
