@@ -25,7 +25,7 @@ const ParselList = () => {
     }, [])
 
 
-
+console.log(orders);
 
     const handelClick = (id) => {
         history.push(`/dashboard/OrderDetails/${id}`)
@@ -56,7 +56,7 @@ const ParselList = () => {
                             < tbody key={order._id}>
                                 <tr>
                                     <th scope="row">{order._id}</th>
-                                    <td>{order.orderInfo.title}</td>
+                                    <td>{order.orderInfo?.title}</td>
                                     <td>{order.name}</td>
                                     <td>{order.status}</td>
                                     <td> <button onClick={() => handelClick(order._id)} className="btn btn-warning">view</button> </td>

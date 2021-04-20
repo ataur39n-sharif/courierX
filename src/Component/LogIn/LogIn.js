@@ -5,6 +5,7 @@ import firebaseConfig from './firebase.config';
 import { userContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
 import Swal from 'sweetalert2';
+import { Google } from 'react-bootstrap-icons';
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -38,16 +39,30 @@ const LogIn = () => {
             .signInWithPopup(provider)
             .then((result) => {
                 console.log(result);
-                const { displayName, email, photoURL } = result.user;
-                const userInfo = {
-                    name: displayName,
-                    email: email,
-                    image: photoURL
-                };
-                setLoggedInUser(userInfo)
-                history.replace(from)
-                authToken()
+                if (result.user.displayName) {
+                    Swal.fire(
+                        'success!',
+                        'Successfully logged In',
+                        'success'
+                    )
+
+                    const { displayName, email, photoURL } = result.user;
+                    const userInfo = {
+                        name: displayName,
+                        email: email,
+                        image: photoURL
+                    };
+                    setLoggedInUser(userInfo)
+                    history.replace(from)
+                    authToken()
+                }
+
             }).catch((error) => {
+                Swal.fire(
+                    'Error!',
+                    'something went wrong, please try again later',
+                    'error'
+                )
                 const errorMessage = error.message;
                 console.log(errorMessage);
             });
@@ -77,9 +92,10 @@ const LogIn = () => {
 
 
     return (
-        <div>
-            <h3>this is log In page</h3>
-            <button onClick={handleClick}>sign in </button>
+        <div className="d-flex justify-content-center align-items-center">
+            <div className='p-5'>
+                <button className="btn btn-warning" onClick={handleClick}><Google></Google> sign in with Google </button>
+            </div>
         </div>
     );
 };

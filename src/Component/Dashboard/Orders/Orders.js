@@ -38,7 +38,7 @@ console.log(orders);
                         < tbody key={order._id}>
                             <tr>
                                 <th scope="row">{order._id}</th>
-                                <td>{order.orderInfo.title}</td>
+                                <td>{order.orderInfo?.title}</td>
                                 <td>{order.orderDate}</td>
                                 <td>{order.status}</td>
                                 
