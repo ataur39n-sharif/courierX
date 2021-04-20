@@ -6,7 +6,7 @@ import Orders from './Orders/Orders';
 import ParselList from './ParselList/ParselList';
 import Sidebar from './Sidebar/Sidebar';
 import AddAdmin from './AddAdmin/AddAdmin';
-import Review from './Review/Review';
+import Review from './AddReview/AddReview';
 import Default from './Default/Default';
 import OrderDetails from './ParselList/OrderDetails';
 

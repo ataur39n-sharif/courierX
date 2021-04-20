@@ -63,7 +63,7 @@ const LogIn = () => {
                 inputPlaceholder:
                     'I agree with the terms and conditions',
                 confirmButtonText:
-                    'Continue&nbsp;<i class="fa fa-arrow-right"></i>',
+                    'Continue&nbsp;<i  className="fa fa-arrow-right"></i>',
                 inputValidator: (result) => {
                     return !result && 'You need to agree with T&C'
                 }

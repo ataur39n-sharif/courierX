@@ -1,0 +1,22 @@
+.custom-width{
+    padding: 0px 50px;
+}
+
+.tracker-box{
+    border-radius: 20px;
+    /* box-shadow: 5px 5px 10px #ccc; */
+background:#4E92E7;
+    padding: 10px 0 ;
+}
+.tracker-container{
+    background-image:
+    linear-gradient( 
+        #FFFFFF 50%,
+        #F8F9FA 50%
+      
+    );
+}
+
+.track-details{
+    /* border-radius:20px; */
+}

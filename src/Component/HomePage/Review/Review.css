@@ -1,0 +1,18 @@
+.review-img{
+    transition: all 0.9s ease-in-out 0s;
+}
+.review-img:hover{
+    transform: rotate(360deg);
+    transition: all 1s ease-in-out 0s;
+}
+
+.review{
+    border-radius: 20px;
+}
+
+.review:hover{
+    border: 5px solid #ffc107 ;
+    border-radius: 20px;
+    transition: all 0.7s ease-in-out 0s;
+    box-shadow: 5px 5px 10px #ccc;
+}

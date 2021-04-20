@@ -36,6 +36,7 @@ const OrderDetails = () => {
 
     }
 
+
     const handelClick = (id) => {
 
         Swal.fire({
@@ -108,8 +109,8 @@ const OrderDetails = () => {
             :
             (
 
-                <div class="d-flex justify-content-center">
-                    <div class="spinner-border" role="status">
+                <div  className="d-flex justify-content-center">
+                    <div  className="spinner-border" role="status">
                     </div>
                 </div>
                 )

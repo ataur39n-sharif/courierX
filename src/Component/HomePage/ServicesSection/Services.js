@@ -34,11 +34,6 @@ const Services = () => {
     }
 
     return (
-        // <div>
-        //     {
-        //         services.map(service => <li key={service._id}>name: {service.title} cost: {service.cost} <Link to={`/details/${service._id}`}><button>buy now</button></Link></li>)
-        //     }
-        // </div>
 
 
         <div className='row w-100 text-center p-5 bg-light rounded'>
@@ -48,15 +43,11 @@ const Services = () => {
 
 
 
-                    <div key={service._id} className="col-sm-6 col-md-4  d-flex justify-content-center mb-3 ">
+                    <div key={service._id} className="col-sm-6 col-md-4  d-flex justify-content-center mb-5">
 
-                        {/* <animated.div
-                            onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-                            onMouseLeave={() => set({ xys: [0, 0, 1] })}
-                            style={{ transform: props.xys.interpolate(trans) }}>
- */}
+    
 
-                            <div className="card p-3" style={{ width: "18rem" }}>
+                            <div className="card p-3 custom-hover" style={{ width: "18rem" }}>
                                 {/* <img src={images}  alt=""> */}
                                 <img className="p-2 bg-light rounded" style={{ height: "190px" }} src={service.image} alt="" />
                                 <div className="card-body">
@@ -66,8 +57,6 @@ const Services = () => {
                                 </div>
                             </div>
 
-
-                        {/* </animated.div> */}
 
                     </div>
 

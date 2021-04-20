@@ -1,0 +1,9 @@
+.custom-hover{
+    transition:all ease 0.3s
+}
+.custom-hover:hover{
+    /* margin-bottom : 10px; */
+    transform:scale(1.10);
+    box-shadow: 5px 5px 10px #ccc;
+    transition:all ease 0.3s;
+}
