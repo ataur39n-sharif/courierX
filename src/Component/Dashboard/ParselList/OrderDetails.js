@@ -6,7 +6,6 @@ const OrderDetails = () => {
     const {id} = useParams()
     const [show, setShow] = useState(false)
     const [ order , setOrder] = useState({})
-    const [update, setUpdate] = useState({})
 
     const loadData = () => {
         fetch(`https://frozen-inlet-20228.herokuapp.com/OrderDetails/${id}`)
@@ -21,23 +20,11 @@ const OrderDetails = () => {
       loadData()
     },[])
 
-    const handelChange = (e) => {
-        console.log(e.target.name, e.target.value);
-        const data = { ...update }
-        data[e.target.name] = e.target.value
-        setUpdate(data)
-        setShow(true)
-
-        Swal.fire(
-            'Note!',
-            'Though you changed the order status but still showing previous status . Once you Hit Update button then you can see the latest status.',
-            'info'
-        )
-
-    }
 
 
     const handelClick = (id) => {
+
+        const status = document.getElementById('status').value
 
         Swal.fire({
             title: 'Are you sure?',
@@ -52,9 +39,9 @@ const OrderDetails = () => {
                 fetch(`https://frozen-inlet-20228.herokuapp.com/update/${id}`, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(update)
+                    body: JSON.stringify({status:status})
                 })
                     .then(response => response.json())
                     .then(data => {
@@ -83,7 +70,6 @@ const OrderDetails = () => {
                         <th scope="col">Service name</th>
                         <th scope="col">order date</th>
                         <th scope="col">order status</th>
-                        <th scope="col">Action</th>
 
                     </tr>
                 </thead>
@@ -93,13 +79,12 @@ const OrderDetails = () => {
                                 <th scope="row">{order.orderInfo.title}</th>
                                 <td>{order.orderDate}</td>
                                 <td className='d-flex justify-content-center'>
-                                <select  value={order.status} onChange={handelChange} className="form-control w-50 bg-dark text-light" name="status">
-                                            <option className='text-warning text-center' >pending</option>
-                                            <option className='text-info text-center' > shipped </option>
-                                            <option  className='text-success text-center'> done</option>
+                                <select id="status"  value={order.status} onChange={()=>handelClick(order._id)} className="form-control w-50 bg-dark text-light" name="status">
+                                            <option value='pending' className='text-warning text-center' >pending</option>
+                                            <option value='shipped' className='text-info text-center' > shipped </option>
+                                            <option value='done'  className='text-success text-center'> done</option>
                                         </select>
                                 </td>
-                                <td><button onClick={() => handelClick(order._id)} className='btn btn-warning'>Update</button></td>
                             </tr>
                         </tbody>
                     

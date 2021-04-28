@@ -34,11 +34,10 @@ console.log(orders);
 
 
 
-
-
     return (
         <div data-aos="fade-down" data-aos-duration="1500" className="text-center rounded mt-4 bg-light w-100 p-3">
             <h1 className='m-5'>All OrderEntry list</h1>
+            {/* <button onClick={handleReset}>reset</button> */}
             { orders.length > 0 ?
                 <table className="table table-success  table-hover  mt-5 ">
                     <thead>
@@ -67,7 +66,10 @@ console.log(orders);
                     }
 
                 </table>
-                :
+                : orders.length === 0 ?
+                <div>
+                    <h6>No order found </h6>
+                </div>:
                     <div  className="d-flex justify-content-center">
                         <div  className="spinner-border" role="status">
                         </div>

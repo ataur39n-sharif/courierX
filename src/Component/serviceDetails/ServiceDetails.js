@@ -14,7 +14,6 @@ const CheckOut = () => {
         fetch(`https://frozen-inlet-20228.herokuapp.com/serviceList/${id}`)
             .then(response => response.json())
             .then(data => {
-                // console.log(data);
                 setCheckout(data[0])
             })
     }, [])
@@ -25,9 +24,6 @@ const CheckOut = () => {
         newInfo.orderInfo = checkout
         setLoggedInUser(newInfo)
         history.push('/shipment')
-        // if (loggedInUser.email) {
-        //     history.push('/shipment')
-        // }
     }
 
     console.log(checkout);
