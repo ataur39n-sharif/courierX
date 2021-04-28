@@ -15,6 +15,8 @@ const SimplePay = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    Swal.showLoading()
+
     if (!stripe || !elements) {
       return;
     }

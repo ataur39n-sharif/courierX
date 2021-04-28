@@ -48,6 +48,7 @@ const LogIn = () => {
 
                     const { displayName, email, photoURL } = result.user;
                     const userInfo = {
+                        ...loggedInUser,
                         name: displayName,
                         email: email,
                         image: photoURL

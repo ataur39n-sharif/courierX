@@ -24,9 +24,7 @@ const CheckOut = () => {
         const newInfo = { ...loggedInUser }
         newInfo.orderInfo = checkout
         setLoggedInUser(newInfo)
-        if (loggedInUser.email) {
-            history.push('/shipment')
-        }
+        history.push('/shipment')
         // if (loggedInUser.email) {
         //     history.push('/shipment')
         // }
