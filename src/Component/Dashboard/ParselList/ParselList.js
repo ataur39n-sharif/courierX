@@ -5,6 +5,8 @@ import Swal from 'sweetalert2';
 const ParselList = () => {
 
     const [orders, setOrders] = useState([])
+    const [show, setShow] = useState(false)
+
 
     let history = useHistory()
 
@@ -25,10 +27,48 @@ const ParselList = () => {
     }, [])
 
 
-console.log(orders);
+    console.log(orders);
+
+    const handelNext = (id) => {
+        history.push(`/dashboard/OrderDetails/${id}`)
+    }
 
     const handelClick = (id) => {
-        history.push(`/dashboard/OrderDetails/${id}`)
+
+        const status = document.getElementById(`status-${id}`).value
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Change order status",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://frozen-inlet-20228.herokuapp.com/update/${id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+
+                    },
+                    body: JSON.stringify({ status: status })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        loadData()
+                        console.log(data);
+                        setShow(false)
+
+                        Swal.fire(
+                            'Updated!',
+                            'Order Status updated',
+                            'success'
+                        )
+                    })
+            }
+        })
     }
 
 
@@ -57,8 +97,14 @@ console.log(orders);
                                     <th scope="row">{order._id}</th>
                                     <td>{order.orderInfo?.title}</td>
                                     <td>{order.name}</td>
-                                    <td>{order.status}</td>
-                                    <td> <button onClick={() => handelClick(order._id)} className="btn btn-warning">view</button> </td>
+                                    <td className='d-flex justify-content-center'>
+                                        <select id={`status-${order._id}`} value={order.status} onChange={() => handelClick(order._id)} className="form-control w-50 bg-dark text-light" name="status">
+                                            <option value='pending' className='text-warning text-center' >pending</option>
+                                            <option value='shipped' className='text-info text-center' > shipped </option>
+                                            <option value='done' className='text-success text-center'> done</option>
+                                        </select>
+                                    </td>
+                                    <td> <button onClick={() => handelNext(order._id)} className="btn btn-warning">view</button> </td>
                                 </tr>
                             </tbody>
 
@@ -67,11 +113,11 @@ console.log(orders);
 
                 </table>
                 : orders.length === 0 ?
-                <div>
-                    <h6>No order found </h6>
-                </div>:
-                    <div  className="d-flex justify-content-center">
-                        <div  className="spinner-border" role="status">
+                    <div>
+                        <h6>No order found </h6>
+                    </div> :
+                    <div className="d-flex justify-content-center">
+                        <div className="spinner-border" role="status">
                         </div>
                     </div>
             }

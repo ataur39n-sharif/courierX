@@ -20,7 +20,8 @@ const AddAdmin = () => {
                 fetch(`https://frozen-inlet-20228.herokuapp.com/addAdmin`,{
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        
                     },
                     body: JSON.stringify(data)
                 })

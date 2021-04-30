@@ -40,7 +40,8 @@ const SimplePay = () => {
       fetch(`https://frozen-inlet-20228.herokuapp.com/addOrder`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          
         },
         body: JSON.stringify(info)
       })

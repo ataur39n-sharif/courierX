@@ -3,28 +3,28 @@ import { useParams } from 'react-router';
 import Swal from 'sweetalert2';
 
 const OrderDetails = () => {
-    const {id} = useParams()
+    const { id } = useParams()
     const [show, setShow] = useState(false)
-    const [ order , setOrder] = useState({})
+    const [order, setOrder] = useState({})
 
     const loadData = () => {
         fetch(`https://frozen-inlet-20228.herokuapp.com/OrderDetails/${id}`)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data[0])
-            setOrder(data[0])
-        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data[0])
+                setOrder(data[0])
+            })
     }
 
     useEffect(() => {
-      loadData()
-    },[])
+        loadData()
+    }, [])
 
 
 
     const handelClick = (id) => {
 
-        const status = document.getElementById('status').value
+        const status = document.getElementById(`status-${id}`).value
 
         Swal.fire({
             title: 'Are you sure?',
@@ -40,8 +40,9 @@ const OrderDetails = () => {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+
                     },
-                    body: JSON.stringify({status:status})
+                    body: JSON.stringify({ status: status })
                 })
                     .then(response => response.json())
                     .then(data => {
@@ -62,45 +63,45 @@ const OrderDetails = () => {
 
     return (
         <div data-aos="fade-down" data-aos-duration="1500" className="text-center rounded mt-4 bg-light w-100 p-3">
-        <h1 className='m-5'>Order Details</h1>
-        { order._id ?
-            <table className="table table-success  table-hover  mt-5 ">
-                <thead>
-                    <tr>
-                        <th scope="col">Service name</th>
-                        <th scope="col">order date</th>
-                        <th scope="col">order status</th>
+            <h1 className='m-5'>Order Details</h1>
+            { order._id ?
+                <table className="table table-success  table-hover  mt-5 ">
+                    <thead>
+                        <tr>
+                            <th scope="col">Service name</th>
+                            <th scope="col">order date</th>
+                            <th scope="col">order status</th>
 
-                    </tr>
-                </thead>
+                        </tr>
+                    </thead>
 
-                < tbody key={order._id}>
-                            <tr>
-                                <th scope="row">{order.orderInfo.title}</th>
-                                <td>{order.orderDate}</td>
-                                <td className='d-flex justify-content-center'>
-                                <select id="status"  value={order.status} onChange={()=>handelClick(order._id)} className="form-control w-50 bg-dark text-light" name="status">
-                                            <option value='pending' className='text-warning text-center' >pending</option>
-                                            <option value='shipped' className='text-info text-center' > shipped </option>
-                                            <option value='done'  className='text-success text-center'> done</option>
-                                        </select>
-                                </td>
-                            </tr>
-                        </tbody>
-                    
-                
+                    < tbody key={order._id}>
+                        <tr>
+                            <th scope="row">{order.orderInfo.title}</th>
+                            <td>{order.orderDate}</td>
+                            <td className='d-flex justify-content-center'>
+                                <select id={`status-${order._id}`} value={order.status} onChange={() => handelClick(order._id)} className="form-control w-50 bg-dark text-light" name="status">
+                                    <option value='pending' className='text-warning text-center' >pending</option>
+                                    <option value='shipped' className='text-info text-center' > shipped </option>
+                                    <option value='done' className='text-success text-center'> done</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
 
-            </table>
-            :
-            (
 
-                <div  className="d-flex justify-content-center">
-                    <div  className="spinner-border" role="status">
+
+                </table>
+                :
+                (
+
+                    <div className="d-flex justify-content-center">
+                        <div className="spinner-border" role="status">
+                        </div>
                     </div>
-                </div>
                 )
-        }
-    </div >
+            }
+        </div >
     );
 };
 
