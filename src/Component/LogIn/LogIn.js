@@ -6,6 +6,7 @@ import { userContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
 import Swal from 'sweetalert2';
 import { Google } from 'react-bootstrap-icons';
+import { useForm } from 'react-hook-form';
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -16,6 +17,7 @@ if (!firebase.apps.length) {
 const LogIn = () => {
 
     const [loggedInUser, setLoggedInUser] = useContext(userContext)
+    const { register, handleSubmit} = useForm();
 
     const history = useHistory();
     const location = useLocation();
@@ -34,7 +36,7 @@ const LogIn = () => {
 
     }
 
-    const logIn = () => {
+    const handelSignIn = () => {
         firebase.auth()
             .signInWithPopup(provider)
             .then((result) => {
@@ -86,18 +88,54 @@ const LogIn = () => {
             })
 
             if (accept) {
-                logIn()
+                handelSignIn()
             }
         })()
     }
 
+    const onSubmit = data => {
+
+        console.log(data);
+        // firebase.auth().signInWithEmailAndPassword(data.email, data.password)
+        //     .then((userCredential) => {
+        //         const user = userCredential.user;
+
+        //         fetch(`https://fathomless-bayou-61663.herokuapp.com/userInfo?email=${user.email}`)
+        //             .then((response) => response.json())
+        //             .then(result => {
+        //                 console.log(result);
+        //                 setLoggedInUser(result[0])
+        //                 Swal.fire( 'Success','successfully logged in ','success')
+        //                 history.push('/')
+        //             })
+        //     })
+        //     .catch((error) => {
+        //         const errorMessage = error.message;
+        //         // console.log(errorMessage);
+        //         alert(errorMessage)
+        //     });
+
+
+    };
 
     return (
-        <div className="d-flex justify-content-center align-items-center">
-            <div className='p-5'>
-                <button className="btn btn-warning" onClick={handleClick}><Google></Google> sign in with Google </button>
+        <>
+            <div className="d-flex justify-content-center align-items-center">
+                <div className='p-5'>
+                    <button className="btn btn-warning" onClick={handleClick}><Google></Google> sign in with Google </button>
+                </div>
             </div>
-        </div>
+            <div className="w-100 d-flex justify-content-center">
+                <form className="text-center w-25 mt-5" onSubmit={handleSubmit(onSubmit)}>
+                    <h1 className="p-5">Login</h1>
+                    <input className="form-control m-2" placeholder="Enter your email" type="email"{...register("email", { required: true })} />
+                    <br />
+                    <input className="form-control m-2" placeholder="Enter your password" type="password"{...register("password", { required: true })} />
+                    <br />
+                    <input className='btn btn-dark' type="submit" value="LogIn" />
+                </form>
+            </div>
+        </>
     );
 };
 

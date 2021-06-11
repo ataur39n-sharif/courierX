@@ -71,12 +71,17 @@ const SimplePay = () => {
   return (
     <div className="text-center w-50 m-auto">
       <h1 className='p-5'>To process Order Make payment</h1>
+      
       <form onSubmit={handleSubmit}>
         <CardElement className='m-5' />
         <button className="btn btn-dark" type="submit" disabled={!stripe}>
           Pay
       </button>
       </form>
+      <div>
+      <small>demo default card number is : 4242 4242 4242 4242 </small>
+      <small>and exp date is any future date</small>
+      </div>
     </div>
   );
 };
